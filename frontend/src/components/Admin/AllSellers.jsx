@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
+import { DataGrid } from '@mui/x-data-grid';
+import { Button } from '@mui/material';
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import styles from "../../style/style";
 import { RxCross1 } from "react-icons/rx";

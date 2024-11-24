@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import AdminHeader from "../components/layouts/AdminHeader";
 import AdminSideBar from "../components/Admin/Layout/AdminSideBar";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Button } from '@mui/material';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { getAllOrdersOfAdmin } from "../redux/actions/order";
 

@@ -3,7 +3,7 @@ import styles from "../../style/style";
 import { Link } from "react-router-dom";
 import { MdBorderClear } from "react-icons/md";
 import {  AiOutlineMoneyCollect } from "react-icons/ai";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../../redux/actions/order";
 import Loader from "../layouts/loader";

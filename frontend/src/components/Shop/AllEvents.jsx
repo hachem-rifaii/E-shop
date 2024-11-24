@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent } from "../../redux/actions/event";
 import { Link } from "react-router-dom";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
-import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
+import { DataGrid } from '@mui/x-data-grid';
+import { Button } from '@mui/material';
 import Loader from "../layouts/loader";
 import { getAllEventsShop } from "../../redux/actions/event";
 

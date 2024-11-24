@@ -8,8 +8,8 @@ import {
 } from "react-icons/ai";
 import styles from "../../style/style";
 import { Link } from "react-router-dom";
-import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
+import { DataGrid } from '@mui/x-data-grid';
+import { Button } from '@mui/material';
 import { MdTrackChanges } from "react-icons/md";
 import { deleteUserAddress, loadUser, updateUserAddresses, updateUserInformation } from "../../redux/actions/user";
 import { Country, State } from "country-state-city"

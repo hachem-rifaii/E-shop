@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
+import { DataGrid } from '@mui/x-data-grid';
+import { Button } from '@mui/material';
 import axios from "axios";
 import { server } from "../../server";
 import { AiOutlineEye } from "react-icons/ai";
