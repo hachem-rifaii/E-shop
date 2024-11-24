@@ -14,6 +14,9 @@ app.use(
   })
 );
 app.use("/", express.static("uploads"));
+app.use("/", (req, res) => {
+  res.send("helo from e-shop");
+});
 app.use(bodyParse.urlencoded({ extended: true, limit: "50mb" }));
 
 // config
