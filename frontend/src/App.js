@@ -86,7 +86,7 @@ const App = () => {
     Store.dispatch(getAllEvents());
     getStripeApiKey();
   }, []);
-  console.log(stripeApiKey);
+
   return (
     <>
       <Router>

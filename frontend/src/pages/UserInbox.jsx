@@ -266,7 +266,7 @@ const MessageList = ({
     };
     getUser();
   }, [me, data]);
-  console.log(user, "hachem");
+ 
   return (
     <div
       className={`w-full flex p-3 px-3 ${
