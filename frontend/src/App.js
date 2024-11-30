@@ -109,7 +109,7 @@ const App = () => {
  {/* user routes */}
         <Routes>
           <Route path="/"                                    element={<HomePage />} />
-          <Route path="/sing-up"                             element={<SignUpPage />} />
+          <Route path="/sign-up"                             element={<SignUpPage />} />
           <Route path="/activation/:activation_token"        element={<ActivationPage />}/>
           <Route path="/login"                               element={<LoginPage />} />
           <Route path="/product"                             element={<ProductsPage />} />
