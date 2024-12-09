@@ -10,37 +10,25 @@ const { upload } = require("../multer");
 const ErrorHandler = require("../utils/ErrorHandler");
 const shop = require("../model/shop");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const uploadPath = path.join(__dirname, "../uploads"); // Define the absolute uploads path
 
+// register shop
 router.post("/create-shop", upload.single("file"), async (req, res, next) => {
   try {
     const { email } = req.body;
     const sellerEmail = await shop.findOne({ email });
-
-    // If a seller with the given email already exists
     if (sellerEmail) {
-      if (req.file && req.file.filename) {
-        const filePath = path.join(uploadPath, req.file.filename);
-
-        // Check if the file exists before attempting to delete it
-        if (fs.existsSync(filePath)) {
-          fs.unlink(filePath, (err) => {
-            if (err) {
-              console.error("Error deleting file:", err);
-              return res
-                .status(500)
-                .json({ message: "Error deleting old file" });
-            }
-          });
+      const fileName = req.file.filename;
+      const filePath = `uploads/${fileName}`;
+      fs.unlink(filePath, function (err) {
+        if (err) {
+          console.log("Error deleting old file:", err);
+          res.status(500).json({ message: "Error deleting old file" });
         }
-      }
-
-      return next(new ErrorHandler("Shop already exists", 400));
+      });
+      return next(new ErrorHandler("shop already exists", 400));
     }
-
-    // If the seller doesn't exist, save the new seller
-    const filename = req.file?.filename; // Optional chaining in case `req.file` is undefined
-    const fileUrl = filename ? `/uploads/${filename}` : null; // Store relative file URL
+    const filename = req.file.filename;
+    const fileUrl = path.join(filename);
 
     const seller = {
       name: req.body.name,
@@ -51,7 +39,6 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
       address: req.body.address,
       zipCode: req.body.zipCode,
     };
-
     const activationToken = createActivationToken(seller);
     const activationUrl = `https://e-shop-xf6x.vercel.app/seller/activation/${activationToken}`;
 
@@ -61,17 +48,16 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
         subject: "Account Activation Link",
         message: `Please click the following link to activate your shop: ${activationUrl}`,
       });
-
       res.status(201).json({
         success: true,
         message:
-          "Shop created successfully, please check your email for the activation link",
+          "shop created successfully, please check your email for activation link",
       });
     } catch (error) {
-      return next(new ErrorHandler(error.message || "Email send failed", 500));
+      return next(new ErrorHandler(error, 500));
     }
   } catch (error) {
-    return next(new ErrorHandler(error.message || "Something went wrong", 400));
+    return next(new ErrorHandler(error, 400));
   }
 });
 
