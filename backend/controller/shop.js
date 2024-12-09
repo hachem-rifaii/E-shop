@@ -18,7 +18,8 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
     const sellerEmail = await shop.findOne({ email });
     if (sellerEmail) {
       const fileName = req.file.filename;
-      const filePath = `../uploads/${fileName}`;
+      const filePath = path.join(__dirname, "../uploads", req.file.filename);
+
       
       fs.unlink(filePath, function (err) {
         if (err) {
