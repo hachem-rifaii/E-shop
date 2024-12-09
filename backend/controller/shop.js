@@ -18,7 +18,8 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
     const sellerEmail = await shop.findOne({ email });
     if (sellerEmail) {
       const fileName = req.file.filename;
-      const filePath = `uploads/${fileName}`;
+      const filePath = `../uploads/${fileName}`;
+      
       fs.unlink(filePath, function (err) {
         if (err) {
           console.log("Error deleting old file:", err);
